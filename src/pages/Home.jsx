@@ -1,10 +1,11 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Card } from "../components/Card"
 
 function Home() {
 
   const [studentName, setStudentName] = useState()
   const [students, setStudents] = useState([])
+  const [user, setUser] = useState({ name:'', avatar:'' })
 
   function handleAddStudent() {
     const newStudent = {
@@ -19,6 +20,17 @@ function Home() {
     setStudents(prevState => [...prevState, newStudent])
   }
 
+  useEffect(() => {
+    fetch('https://api.github.com/users/FelipeFerreiraSS')
+      .then(response => response.json())
+      .then(data => {
+        setUser({
+          name: data.name,
+          avatar: data.avatar_url
+        })
+      })
+  }, [])
+
   return (
     <main className="flex min-h-screen justify-center overflow-hidden bg-gray-800 py-6 sm:py-12 ">
       <div className="container mx-auto rounded flex flex-col items-center bg-gray-800">
@@ -29,9 +41,9 @@ function Home() {
 
           <div className="flex items-center">
             <strong className="text-cyan-50 mr-3 sm:text-1xl">
-              Felipe Ferreira
+              {user.name}
             </strong>
-            <img className="w-16 rounded-full" src="https://github.com/felipeferreirass.png"/>
+            <img className="w-16 rounded-full" src={user.avatar}/>
           </div>
           
         </header>
