@@ -22,9 +22,20 @@ function Home() {
   return (
     <main className="flex min-h-screen justify-center overflow-hidden bg-gray-800 py-6 sm:py-12 ">
       <div className="container mx-auto rounded flex flex-col items-center bg-gray-800">
-        <h1 className="sm:text-5xl text-4xl text-cyan-50 mt-6 mb-6">
-          Lista de Presença
-        </h1>
+        <header className="flex justify-between w-3/4 sm:w-2/3 lg:w-1/2">
+          <h1 className="sm:text-4xl text-4xl text-cyan-50 mt-6 mb-6">
+            Lista de Presença
+          </h1>
+
+          <div className="flex items-center">
+            <strong className="text-cyan-50 mr-3 sm:text-1xl">
+              Felipe Ferreira
+            </strong>
+            <img className="w-16 rounded-full" src="https://github.com/felipeferreirass.png"/>
+          </div>
+          
+        </header>
+
         <input 
           className="w-3/4 sm:w-2/3 lg:w-1/2 border-none rounded mt-6 mb-6 py-3 px-2 text-xl focus:outline-none"
           type="text" 
